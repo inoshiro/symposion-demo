@@ -166,6 +166,7 @@ INSTALLED_APPS = [
     "pinax.apps.signup_codes",
     
     # symposion
+    "symposion.conference",
     "symposion.proposals",
     "symposion.speakers",
     "symposion.sponsors",
