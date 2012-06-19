@@ -1,0 +1,34 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load ifsetting_tag %}
+
+{% block head_title %}{% trans "What Next?" %}{% endblock %}
+
+{% block body %}
+
+<table>
+{% for table in timetables %}
+  <tr>
+    <th>time</th>
+{% for track in table.tracks %}
+    <th>{{ track.name }}</th>
+{% endfor %}
+  </tr>
+{% for row in table %}
+  <tr>
+    <td>{{ row.time }}</td>
+  {% for slot in row.slots %}
+    <td>
+    {{ slot.id }}) <a href="/schedule/presentations/{{ slot.presentation.id }}">{{ slot.presentation.title}}</a><br/>
+    {{ slot.presentation.speaker }}
+    </td>
+  {% endfor %}
+  </tr>
+{% endfor %}
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
